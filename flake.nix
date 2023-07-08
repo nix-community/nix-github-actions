@@ -13,7 +13,7 @@
       githubActions = self.lib.mkGithubMatrix {
         # Inherit GHA actions matrix from a subset of platforms supported by hosted runners
         checks = {
-          inherit (self.checks) x86_64-linux;
+          inherit (self.checks) x86_64-linux x86_64-darwin;
         };
       };
 
