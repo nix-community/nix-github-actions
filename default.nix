@@ -5,6 +5,7 @@ let
   self = {
     githubPlatforms = {
       "x86_64-linux" = "ubuntu-22.04";
+      "x86_64-darwin" = "macos-12";
     };
 
     # Return a Gitub Actions matrix from a package set shaped like
