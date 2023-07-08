@@ -15,15 +15,23 @@ SCRIPT_DIR = dirname(abspath(__file__))
 
 if __name__ == "__main__":
     workflow_dir = path_join(SCRIPT_DIR, ".github/workflows")
-    files = [path_join(workflow_dir, f) for f in os.listdir(workflow_dir) if f.endswith(".yml")]
+    files = sorted([
+        path_join(workflow_dir, f)
+        for f in os.listdir(workflow_dir)
+        if f.endswith(".yml") and f != "dependabot.yml"
+    ])
 
-    print(dedent("""
+    print(
+        dedent(
+            """
     nix-github-actions quickstart
 
     This interactive tool helps you to:
     - Select & install a Github CI template into your repository
     - Outputs a code snippet for you to copy & paste into your flake.lock
-    """))
+    """
+        )
+    )
 
     # Select CI template
     while True:
