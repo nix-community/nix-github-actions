@@ -16,7 +16,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v22
       - id: set-matrix
-        run: echo "matrix=$(nix eval --json '.#githubActions.matrix')" >> "$GITHUB_OUTPUT"
+        name: Generate Nix Matrix
+        run: |
+          set -Eeu
+          echo "matrix=$(nix eval --json '.#githubActions.matrix')" >> "$GITHUB_OUTPUT"
 
   nix-build:
     needs: nix-matrix
