@@ -35,6 +35,7 @@ $ nix run github:adisbladis/nix-github-actions
 ``` nix
 {
   inputs.nix-github-actions.url = "github:adisbladis/nix-github-actions";
+  inputs.nix-github-actions.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = { self, nixpkgs, nix-github-actions }: {
     githubActions = nix-github-actions.lib.mkGithubMatrix { checks = self.packages; };
@@ -50,6 +51,7 @@ $ nix run github:adisbladis/nix-github-actions
 ``` nix
 {
   inputs.nix-github-actions.url = "github:adisbladis/nix-github-actions";
+  inputs.nix-github-actions.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = { self, nixpkgs, nix-github-actions }: {
     githubActions = nix-github-actions.lib.mkGithubMatrix { inherit (self) checks; };
