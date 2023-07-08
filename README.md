@@ -17,12 +17,19 @@ Use one Github Actions runner per package attribute
 
 ## Usage
 
+### Quickstart
+nix-github-actions comes with a quickstart script that interactively guides you through integrating it:
+``` bash
+$ nix run github:adisbladis/nix-github-actions
+```
+
+### Manual
+
 1. Find a CI template in [./.github/workflows](./.github/workflows) and copy it to your project
 
 2. Integrate into your project
 
-
-#### Using Flake packages
+#### Using Flake atttribute packages
 
 - `flake.nix`
 ``` nix
@@ -37,7 +44,7 @@ Use one Github Actions runner per package attribute
 }
 ```
 
-#### Using Flake checks
+#### Using Flake attribute checks
 
 - `flake.nix`
 ``` nix

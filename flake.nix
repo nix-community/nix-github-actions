@@ -36,8 +36,27 @@
         in
         {
           default = pkgs.mkShell {
-            packages = [ pkgs.nixpkgs-fmt ];
+            packages = [ pkgs.nixpkgs-fmt pkgs.python3 ];
           };
+        });
+
+      apps = eachSystem supportedSystems (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          quickstart =
+            let
+              drv = pkgs.writeShellScript "nix-github-actions-quickstart" ''
+                exec ${pkgs.python3.interpreter} ${self}/quickstart.py
+              '';
+            in
+            {
+              type = "app";
+              program = "${drv}";
+            };
+
+          default = self.apps.${system}.quickstart;
         });
 
     };
