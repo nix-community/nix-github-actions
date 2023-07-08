@@ -20,7 +20,7 @@ Use one Github Actions runner per package attribute
 ### Quickstart
 nix-github-actions comes with a quickstart script that interactively guides you through integrating it:
 ``` bash
-$ nix run github:adisbladis/nix-github-actions
+$ nix run github:nix-community/nix-github-actions
 ```
 
 ### Manual
@@ -34,7 +34,7 @@ $ nix run github:adisbladis/nix-github-actions
 - `flake.nix`
 ``` nix
 {
-  inputs.nix-github-actions.url = "github:adisbladis/nix-github-actions";
+  inputs.nix-github-actions.url = "github:nix-community/nix-github-actions";
   inputs.nix-github-actions.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = { self, nixpkgs, nix-github-actions }: {
@@ -50,7 +50,7 @@ $ nix run github:adisbladis/nix-github-actions
 - `flake.nix`
 ``` nix
 {
-  inputs.nix-github-actions.url = "github:adisbladis/nix-github-actions";
+  inputs.nix-github-actions.url = "github:nix-community/nix-github-actions";
   inputs.nix-github-actions.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = { self, nixpkgs, nix-github-actions }: {
