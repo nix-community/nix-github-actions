@@ -9,7 +9,7 @@ Install Nix using any method you like
 
 - Flexible
 
-Nix-github-actions is not an action in itself but a series of templates to build your own CI.
+Nix-github-actions is not an action in itself but a series of templates and a Nix library to build your own CI.
 
 - Parallel job execution
 
