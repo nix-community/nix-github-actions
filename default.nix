@@ -12,6 +12,7 @@ let
     # the Flake attribute packages/checks.
     mkGithubMatrix =
       { checks # Takes an attrset shaped like { x86_64-linux = { hello = pkgs.hello; }; }
+      , attrPrefix ? "githubActions"
       , platforms ? self.githubPlatforms
       }: {
         inherit checks;
@@ -23,7 +24,11 @@ let
                   (attr:
                     {
                       os = [ (platforms.${system}) ];
-                      attr = "githubActions.checks.${system}.${attr}";
+                      attr = (
+                        if attrPrefix != ""
+                        then "${attrPrefix}.checks.${system}.${attr}"
+                        else "checks.${system}.${attr}"
+                      );
                     })
                   (attrNames pkgs)
               )
