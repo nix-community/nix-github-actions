@@ -23,7 +23,11 @@ let
                 system: pkgs: builtins.map
                   (attr:
                     {
-                      os = [ (platforms.${system}) ];
+                      os =
+                        let
+                          os = platforms.${system};
+                        in
+                        if builtins.typeOf os == "list" then os else [ os ];
                       attr = (
                         if attrPrefix != ""
                         then "${attrPrefix}.checks.${system}.${attr}"
