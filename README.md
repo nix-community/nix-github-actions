@@ -60,3 +60,14 @@ $ nix run github:nix-community/nix-github-actions
   };
 }
 ```
+
+#### When your Flake supports systems that GitHub Actions does not
+
+If your Flake contains checks for platforms unsupported by Actions, e.g. `aarch64-darwin`,
+you can restrict the systems for which the matrix will be generated:
+
+``` nix
+githubActions = nix-github-actions.lib.mkGithubMatrix {
+  checks = nixpkgs.lib.getAttrs [ "x86_64-linux" "x86_64-darwin" ] self.checks;
+};
+```
