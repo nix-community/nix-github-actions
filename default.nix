@@ -8,11 +8,11 @@ let
       "x86_64-darwin" = "macos-12";
     };
 
-    # Return a Gitub Actions matrix from a package set shaped like
+    # Return a GitHub Actions matrix from a package set shaped like
     # the Flake attribute packages/checks.
     mkGithubMatrix =
       { checks # Takes an attrset shaped like { x86_64-linux = { hello = pkgs.hello; }; }
-      , attrPrefix ? "githubActions"
+      , attrPrefix ? "githubActions.checks"
       , platforms ? self.githubPlatforms
       }: {
         inherit checks;
@@ -30,8 +30,8 @@ let
                         if builtins.typeOf os == "list" then os else [ os ];
                       attr = (
                         if attrPrefix != ""
-                        then "${attrPrefix}.checks.${system}.${attr}"
-                        else "checks.${system}.${attr}"
+                        then "${attrPrefix}.${system}.${attr}"
+                        else "${system}.${attr}"
                       );
                     })
                   (attrNames pkgs)
