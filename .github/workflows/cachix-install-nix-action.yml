@@ -29,4 +29,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v22
-      - run: nix build -L ".#${{ matrix.attr }}"
+      - run: nix build -L ".#githubActions.checks.${{ matrix.attr }}"
