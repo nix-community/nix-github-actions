@@ -13,7 +13,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v22
       - id: set-matrix
         name: Generate Nix Matrix
@@ -27,6 +27,6 @@ jobs:
     strategy:
       matrix: ${{fromJSON(needs.nix-matrix.outputs.matrix)}}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v22
       - run: nix build -L ".#${{ matrix.attr }}"
