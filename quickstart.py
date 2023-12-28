@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     This interactive tool helps you to:
     - Select & install a Github CI template into your repository
-    - Outputs a code snippet for you to copy & paste into your flake.lock
+    - Outputs a code snippet for you to copy & paste into your flake.nix
     """
         )
     )
