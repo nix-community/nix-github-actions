@@ -30,8 +30,8 @@ let
                         if builtins.typeOf os == "list" then os else [ os ];
                       attr = (
                         if attrPrefix != ""
-                        then "${attrPrefix}.${system}.${attr}"
-                        else "${system}.${attr}"
+                        then "${attrPrefix}.${system}.\"${attr}\""
+                        else "${system}.\"${attr}\""
                       );
                     })
                   (attrNames pkgs)
