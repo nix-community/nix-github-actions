@@ -3,9 +3,6 @@ name: Nix Flake actions
 on:
   pull_request:
   push:
-    branches:
-      - master
-      - main
 
 jobs:
   nix-matrix:
