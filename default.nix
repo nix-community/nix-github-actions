@@ -24,6 +24,8 @@ let
                 system: pkgs: builtins.map
                   (attr:
                     {
+                      name = attr;
+                      inherit system;
                       os =
                         let
                           os = platforms.${system};
